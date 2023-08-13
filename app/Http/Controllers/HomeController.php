@@ -31,6 +31,7 @@ class HomeController extends Controller
         return view('home');
     }
 
+    // Get data on request and with range data
     public function getData($start = 0, $limit = 10)
     {
         try {
@@ -76,10 +77,9 @@ class HomeController extends Controller
         }
     }
 
-
+    //It will send request and remove form suggestions
     public function sendRequest($objId)
     {
-        // dd($objId);
         try {
             $suggestion = Suggestion::findOrFail($objId);
 
@@ -98,13 +98,12 @@ class HomeController extends Controller
             return response()->json(['error' => $exception->getMessage()], 500);
         }
     }
+
+    //It will withdraw request and put into suggestions
     public function withDrawRequest($objId)
     {
-        // dd($objId);
         try {
             $send_request = SendRequest::findOrFail($objId);
-
-            // dd($send_request);
 
             $suggestion = new Suggestion();
 
@@ -120,6 +119,8 @@ class HomeController extends Controller
             return response()->json(['error' => $exception->getMessage()], 500);
         }
     }
+
+    //It will accept request and shift it to connections
     public function acceptRequest($objId)
     {
         try {
@@ -139,6 +140,8 @@ class HomeController extends Controller
             return response()->json(['error' => $exception->getMessage()], 500);
         }
     }
+
+    //Remove connection and put it back into suggestion
     public function removeConnection($objId)
     {
         try {

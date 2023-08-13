@@ -84,6 +84,8 @@ export default {
         }
     },
     methods: {
+        //It will get data based on a status, if the status is false it will get more data other wise fresh data from start in case
+        //called from other than load more button or first time
         getData(status) {
             this.data_loading = true;
             if (status) {
@@ -120,10 +122,6 @@ export default {
         loadMore() {
             this.loadedRecords += this.recordsPerPage;
             this.getData(false);
-        },
-        toggleCommonConnections(user) {
-            console.log(user)
-            user.is_common_connect = !user.is_common_connect;
         },
         sendRequest(objId) {
             axios({
