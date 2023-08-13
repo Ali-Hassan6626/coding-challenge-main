@@ -50,7 +50,7 @@
                                             </ul>
                                         </div>
                                         <div class="col-5">
-                                            <button class="btn btn-primary mr-2" @click="obj.is_common_connect = !obj.is_common_connect"> Connection is {{ obj.common_connections ? 'Common (' + (obj.common_connections).length + ')' : 'Not Common' }}</button>
+                                            <button :class="['btn btn-primary mr-2', {'disabled': obj.common_connections == null}]" @click="obj.is_common_connect = !obj.is_common_connect"> Connection in Common ({{ obj.common_connections ? (obj.common_connections).length : 0 }})</button>
                                             <button class="btn btn-danger" @click="removeConnection(obj.id)">Remove Connection</button>
                                         </div>
                                     </div>
