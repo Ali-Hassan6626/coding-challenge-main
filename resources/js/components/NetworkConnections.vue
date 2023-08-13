@@ -44,13 +44,13 @@
                                         <div class="col-7">
                                             <h6 class="pt-3">{{ obj.first_name }} {{ obj.last_name }} - {{ obj.email }}</h6>
                                             <ul :class="[{'d-none': !obj.is_common_connect}, {'d-block' : obj.is_common_connect} ]">
-                                                <li v-for="connection in parseCommonConnections(obj.common_connections)" :key="connection.email">
+                                                <li v-for="connection in obj.common_connections" :key="connection.email">
                                                     {{ connection.first_name }} {{ connection.last_name }} - {{ connection.email }}
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="col-5">
-                                            <button class="btn btn-primary mr-2" @click="obj.is_common_connect = !obj.is_common_connect"> Connection is {{ obj.common_connections ? 'Common (' + (JSON.parse(obj.common_connections)).length + ')' : 'Not Common' }}</button>
+                                            <button class="btn btn-primary mr-2" @click="obj.is_common_connect = !obj.is_common_connect"> Connection is {{ obj.common_connections ? 'Common (' + (obj.common_connections).length + ')' : 'Not Common' }}</button>
                                             <button class="btn btn-danger" @click="removeConnection(obj.id)">Remove Connection</button>
                                         </div>
                                     </div>
@@ -137,14 +137,6 @@ export default {
             .catch(error => {
                 this.errorToast(error.response.error)
             })
-        },
-        parseCommonConnections(commonConnectionsString) {
-            try {
-                return JSON.parse(commonConnectionsString);
-            } catch (error) {
-                console.error('Error parsing common_connections:', error);
-                return [];
-            }
         },
         withdrawRequest(objId) {
             axios({
