@@ -12,6 +12,6 @@ class ReceiveRequest extends Model
     protected $table = "receive_requests";
 
     protected $fillable = [
-        'id', 'email', 'status'
+        'id', 'first_name', 'last_name', 'email', 'status'
     ];
 }

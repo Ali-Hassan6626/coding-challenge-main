@@ -12,6 +12,6 @@ class Suggestion extends Model
     protected $table = "suggestions";
 
     protected $fillable = [
-        'id', 'email', 'status'
+        'id', 'first_name', 'last_name', 'email', 'status'
     ];
 }

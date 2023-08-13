@@ -12,6 +12,6 @@ class SendRequest extends Model
     protected $table = "send_requests";
 
     protected $fillable = [
-        'id', 'email', 'status'
+        'id', 'first_name', 'last_name', 'email', 'status'
     ];
 }

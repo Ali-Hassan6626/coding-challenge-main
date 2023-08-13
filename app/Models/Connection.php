@@ -12,6 +12,10 @@ class Connection extends Model
     protected $table = "connections";
 
     protected $fillable = [
-        'id', 'email', 'status'
+        'id', 'first_name', 'last_name', 'email', 'common_connections', 'is_common_connect', 'status'
+    ];
+
+    protected $casts = [
+        'common_connections' => 'json'
     ];
 }
